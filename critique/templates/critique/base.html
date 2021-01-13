@@ -7,14 +7,12 @@
 
 {% block header-more %}
 <nav id="critique-header-access" class="hidden"><ul>
-    <li><a tabindex="-1" href={% url "preambule" %}>préambule</a></li>
+    <li><a tabindex="-1" href={% url "index" %}>index</a></li>
     <li><a tabindex="-1" href={% url "top_textes" %}>textes choisis</a></li>
     <li><a tabindex="-1" href={% url "list_notes" %}>carnet de notes</a></li>
-    <li><a tabindex="-1" href={% url "list_oeuvres" %}>rencontres passées</a></li>
-    <li><a tabindex="-1" href={% url "list_envies" %}>en ligne de mire</a></li>
-    <li><a tabindex="-1" href={% url "list_cinemas" %}>cinémas parisiens</a></li>
-    <li><a tabindex="-1" href={% url "list_seances" %}>liste des séances</a></li>
-    <li><a tabindex="-1" href={% url "top_films" %}>top films par année</a></li>
+    <li><a tabindex="-1" href={% url "list_envies" %}>perspectives</a></li>
+    <li><a tabindex="-1" href={% url "top_films" %}>top films</a></li>
+    <li><a tabindex="-1" href={% url "top_jeux" %}>top jeux</a></li>
     <li>
         <form action="{% url "search_oeuvres" %}" method="get" role="search">
             <label for="critique-search-input-access">Recherche d'œuvre ou d'artiste :</label>
@@ -46,7 +44,7 @@
         <nav role="navigation">
         <ul>
             <ul id="main-nav-links-h">
-                <li><a href={% url "preambule" %}>préambule</a></li>
+                <li><a href={% url "index" %}>index</a></li>
                 <li><a href={% url "top_textes" %}>textes choisis</a></li>
                 <li><a href={% url "list_notes" %}>carnet de notes</a></li>
             </ul>
@@ -83,21 +81,17 @@
 
     <nav id="sub-nav" class="navbar">
         <ul id="sub-nav-links-h">
-            <li><a href={% url "list_oeuvres" %}>rencontres passées</a></li>
-            <li><a href={% url "list_envies" %}>en ligne de mire</a></li>
-            <li><a href={% url "list_cinemas" %}>cinémas parisiens</a></li>
-            <li><a href={% url "list_seances" %}>liste des séances</a></li>
-            <li><a href={% url "top_films" %}>top films par année</a></li>
+            <li><a href={% url "list_envies" %}>perspectives</a></li>
+            <li><a href={% url "top_films" %}>top films</a></li>
+            <li><a href={% url "top_jeux" %}>top jeux</a></li>
         </ul>
         <ul id="sub-nav-links-v">
-            <li><a href={% url "preambule" %}>préambule</a></li>
+            <li><a href={% url "index" %}>index</a></li>
             <li class="top-textes" style="display: none;"><a href={% url "top_textes" %}>textes choisis</a></li>
             <li><a href={% url "list_notes" %}>carnet de notes</a></li>
-            <li><a href={% url "list_oeuvres" %}>rencontres passées</a></li>
-            <li><a href={% url "list_envies" %}>en ligne de mire</a></li>
-            <li><a href={% url "list_cinemas" %}>cinémas parisiens</a></li>
-            <li><a href={% url "list_seances" %}>liste des séances</a></li>
-            <li><a href={% url "top_films" %}>top films par année</a></li>
+            <li><a href={% url "list_envies" %}>perspectives</a></li>
+            <li><a href={% url "top_films" %}>top films</a></li>
+            <li><a href={% url "top_jeux" %}>top jeux</a></li>
         </ul>
     </nav>
 </div>

@@ -13,20 +13,20 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
-from django.http import Http404, HttpResponse, HttpResponseServerError
+from django.http import HttpResponse, HttpResponseServerError
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaultfilters import slugify
 from django.utils import timezone
 
 from .forms import OeuvreForm, CommentaireForm, CinemaForm, SeanceForm
 from .models import (Artiste, Oeuvre, OeuvreInfo, Titres, Tag,
-                     Commentaire, TopFilms, Cinema, Seance)
+                     Commentaire, TopFilms, TopJeux, Cinema, Seance)
 
 
-# Préambule
+# Index
 
-def preambule(req):
-    return render(req, 'critique/preambule.html', {})
+def index(req):
+    return render(req, 'critique/index.html', {})
 
 
 # Artiste
@@ -408,3 +408,11 @@ def top_films(req, year=2011):
     oeuvres = list(get_object_or_404(TopFilms, year=year).films.all())
     random.shuffle(oeuvres)
     return render(req, 'critique/top_films.html', locals())
+
+
+# Top Jeux
+
+def top_jeux(req, year=2020):
+    oeuvres = list(get_object_or_404(TopJeux, year=year).jeux.all())
+    random.shuffle(oeuvres)
+    return render(req, 'critique/top_jeux.html', locals())
