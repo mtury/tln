@@ -137,6 +137,12 @@ class TopFilms(models.Model):
                                    related_name="top_films",
                                    related_query_name="top_films")
 
+class TopJeux(models.Model):
+    year = models.SmallIntegerField(unique=True)
+    jeux = models.ManyToManyField(Oeuvre,
+                                  related_name="top_jeux",
+                                  related_query_name="top_jeux")
+
 class Cinema(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
