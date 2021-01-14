@@ -370,11 +370,16 @@ a { text-decoration: none; }
 .filter-navbar {
     flex-wrap: wrap;
     overflow-x: hidden;
-    margin-top: 16px;
+    margin-top: -20px;
     margin-bottom: 11px;
     font-size: 44px; }
 _:-ms-fullscreen, :root .filter-navbar { min-height: 58px; } /* IE 11 */
 .filter-navbar li { padding: 0 36px; }
+@media (max-width: 540px) {
+.filter-navbar { margin-top: -18px; margin-bottom: 9px; }
+.filter-navbar ul { margin: -4px 0; }
+.filter-navbar li { padding: 0 18px; }
+.digits-filter-navbar li { padding: 0 22px; } }
 .filter-navbar a { color: black !important; }
 .filter-navbar a:hover { color: #f7a300 !important; }
 .filter-navbar a.selected {

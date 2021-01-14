@@ -13,6 +13,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
+from django.db.models.functions import Length
 from django.http import HttpResponse, HttpResponseServerError
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.defaultfilters import slugify
@@ -269,9 +270,14 @@ def top_textes(req):
 
 def list_notes(req, mtype="all", page=1):
     if mtype == "all":
+        notes_full = Commentaire.objects.annotate(content_len=Length('content')) \
+                                        .filter(content_len__gt=400)
+    elif mtype == "full":
         notes_full = Commentaire.objects.all()
     else:
-        notes_full = Commentaire.objects.filter(oeuvre__info__mtype=mtype)
+        notes_full = Commentaire.objects.filter(oeuvre__info__mtype=mtype) \
+                                        .annotate(content_len=Length('content')) \
+                                        .filter(content_len__gt=400)
     notes_full = notes_full.order_by('-date')
     paginator = Paginator(notes_full, 20)
     try:

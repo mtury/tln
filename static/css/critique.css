@@ -24,7 +24,6 @@ body > header {
 #content-wrap { margin-top: 64px; }
 @media (min-width: 960px) { #content-wrap.decenter { margin-right: 1.4%; } }
 #content { margin-top: 36px; outline: none; }
-.filter-navbar { margin-top: -20px; }
 
 hr, .hseparator {
     margin-left: -1px;
