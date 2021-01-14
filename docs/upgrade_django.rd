@@ -1,7 +1,3 @@
-* sqlite3, libsqlite3-0 & libsqlite3-tcl have been backported to debian 9 version because of django 2.0.9 bug
-* once upgraded to django 2.1, restore the sqlite3 debian10-lts packages
-
-
 pip install pip-review
 pip review --local --interactive
 
