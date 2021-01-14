@@ -97,8 +97,10 @@ hr, .hseparator {
 #critique-header #main-nav > nav { -ms-flex-grow: 1; -ms-flex-shrink: 1; flex: 1; } }
 
 #critique-header #main-nav li { margin: 0 34px; }
+#critique-header #main-nav #critique-search.expanded { margin-left: 12px; }
 
-#critique-header #main-nav #main-nav-links-h { display: -ms-flexbox; display: flex; }
+#critique-header #main-nav #main-nav-links-h { display: -ms-flexbox; display: flex;
+                                               margin-right: 20px; }
 #critique-header #main-nav #main-nav-links-v { display: none; }
 @media (max-width: 1210px) {
 #critique-header #main-nav #main-nav-links-h { display: none; }
@@ -113,7 +115,8 @@ hr, .hseparator {
 
 #critique-search {
     position: relative;
-    font-family: AlegreyaSans, "Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+    font-family: AlegreyaSans, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    transition: all 0.4s ease; }
 #critique-header #main-nav #critique-search { margin-right: 12px; }
 #critique-search-field {
     position: relative;
@@ -340,37 +343,22 @@ _:-ms-input-placeholder, :root #critique-search-results-m a > div > p:first-chil
 #critique-header #sub-nav {
     height: 0;
     -ms-flex-direction: column;
-    flex-direction: column; }
-@media (max-width: 1210px) {
-#critique-header #sub-nav {
+    flex-direction: column;
     float: right;
     width: auto;
-    box-shadow: 0 3px 13px 0px rgba(0, 0, 0, 0.23); } }
+    box-shadow: 0 3px 13px 0px rgba(0, 0, 0, 0.23); }
 #sub-nav.expanded { visibility: visible; }
 
-#critique-header #sub-nav > #sub-nav-links-h { display: -ms-flexbox; display: flex; }
 #critique-header #sub-nav > #sub-nav-links-v { display: none; }
 @media (max-width: 1210px) {
-#critique-header #sub-nav > #sub-nav-links-h { display: none; }
 #critique-header #sub-nav > #sub-nav-links-v { display: -ms-flexbox; display: flex; } }
 
 #critique-header #sub-nav.expanded { height: 46px; }
 @media (max-width: 1210px) {
-#critique-header #sub-nav.expanded { height: 372px; } }
+#critique-header #sub-nav.expanded { height: 160px; } }
 @media (max-width: 880px) {
-#critique-header #sub-nav.expanded { height: 425px; } }
+#critique-header #sub-nav.expanded { height: 213px; } }
 
-#sub-nav-links-h {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap; }
 #sub-nav-links-v {
     display: -ms-flexbox;
     display: flex;

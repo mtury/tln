@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.list_notes, name='list_notes'),
-    path('index/', views.index, name='index'),
+    path('preambule/', views.preambule, name='preambule'),
     path('textes/', views.top_textes, name='top_textes'),
     path('notes/', views.list_notes, name='list_notes'),
     path('notes/<int:page>', views.list_notes, name='list_notes'),
@@ -16,9 +16,9 @@ urlpatterns = [
     path('oeuvre/<slug:slug>/update_latest_comment', views.update_latest_comment, name='update_latest_comment'),
     path('oeuvre/<slug:slug>/delete_latest_comment', views.delete_latest_comment, name='delete_latest_comment'),
     path('artiste/<slug:slug>', views.detail_artiste, name='detail_artiste'),
-    path('envies/', views.list_envies, name='list_envies'),
-    path('envies/<str:mtype>', views.list_envies, name='list_envies'),
-    path('envies/<str:mtype>/<int:page>', views.list_envies, name='list_envies'),
+    path('perspectives/', views.list_envies, name='list_envies'),
+    path('perspectives/<str:mtype>', views.list_envies, name='list_envies'),
+    path('perspectives/<str:mtype>/<int:page>', views.list_envies, name='list_envies'),
     path('top_films/', views.top_films, name='top_films'),
     path('top_films/<int:year>', views.top_films, name='top_films'),
     path('top_jeux/', views.top_jeux, name='top_jeux'),

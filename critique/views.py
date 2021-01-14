@@ -25,8 +25,8 @@ from .models import (Artiste, Oeuvre, OeuvreInfo, Titres, Tag,
 
 # Index
 
-def index(req):
-    return render(req, 'critique/index.html', {})
+def preambule(req):
+    return render(req, 'critique/preambule.html', {})
 
 
 # Artiste

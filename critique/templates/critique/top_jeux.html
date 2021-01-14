@@ -1,0 +1,28 @@
+{% extends "critique/base.html" %}
+{% load static %}
+
+{% block title %}top jeux vidéo{% endblock %}
+{% block meta-description-page %}top jeux vidéo{% endblock %}
+
+{% block content %}
+
+<nav class="navbar filter-navbar {{ year }} digits-filter-navbar">
+    <ul>
+        <li><a desc="2020" href={% url "top_jeux" %}>197x-2020</a></li>
+    </ul>
+</nav>
+
+<ul id="top_jeux" class="oeuvres-display {% if year == 2020 %}all_time{% endif %}">
+{% for oeuvre in oeuvres %}
+    <li class="oeuvre-display">
+        <a href={% url "detail_oeuvre" oeuvre.slug %}>
+        {% if oeuvre.info.image_url %}
+            <img src="{% static oeuvre.info.image_url %}" alt="{{ oeuvre.info.titles.vf }}" />
+        {% else %}
+            {{ oeuvre.info.titles.vf }} ({{ oeuvre.info.year }})
+        {% endif %}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
