@@ -11,6 +11,7 @@ from itertools import chain
 from PIL import Image
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
+from django.core.cache import cache
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
 from django.db.models.functions import Length
@@ -290,13 +291,18 @@ def list_notes(req, mtype="all", page=1):
 
 # Collection
 
-def list_oeuvres(req, mtype="film", page=1):
+def list_oeuvres(req, mtype="film"):
     """
     Liste les oeuvres qui ne sont pas marquées en tant qu'envies.
     (Les "re-" envies ne sont pas prises en charge.)
+    Les listes en cache, si elles existent, expirent au bout de 24 heures.
+    TODO: La page reste lente à cause du formatage de oeuvres vers le html
     """
-    oeuvres_list = Oeuvre.objects.filter(envie=False, info__mtype=mtype)
-    oeuvres = oeuvres_list.order_by('-info__year', '-id')
+    oeuvres = cache.get(f'critique_collection_{mtype}')
+    if not oeuvres:
+        oeuvres = Oeuvre.objects.filter(envie=False, info__mtype=mtype) \
+                                .order_by('-info__year', '-id')
+        cache.set(f'critique_collection_{mtype}', oeuvres, 86400)
     context = {'oeuvres': oeuvres, 'mtype': mtype}
     return render(req, 'critique/collection.html', context)
 

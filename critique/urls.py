@@ -24,7 +24,6 @@ urlpatterns = [
     path('top_jeux/', views.top_jeux, name='top_jeux'),
     path('rencontres/', views.list_oeuvres, name='list_oeuvres'),
     path('rencontres/<str:mtype>', views.list_oeuvres, name='list_oeuvres'),
-    path('rencontres/<str:mtype>/<int:page>', views.list_oeuvres, name='list_oeuvres'),
     path('cinema/<slug:slug>', views.detail_cinema, name='detail_cinema'),
     path('cinema/<slug:slug>/delete', views.delete_cinema, name='delete_cinema'),
     path('cinemas/', views.list_cinemas, name='list_cinemas'),
