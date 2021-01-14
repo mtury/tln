@@ -636,6 +636,10 @@ _:-ms-fullscreen, :root #cinemas.chunks { height: 588px; } /* IE 11 */ }
     flex-direction: column;
     -ms-flex-align: center;
     align-items: center; }
+#preambule .entry-content ul { margin-top: 10px; margin-bottom: 18px; }
+#preambule .entry-content li { padding: 2px 0; }
+#preambule .entry-content li:first-child { padding-top: 0; }
+#preambule .entry-content li:last-child { padding-bottom: 0; }
 #preambule .entry-section {
     max-width: 750px;
     width: 100%; }
