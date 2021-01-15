@@ -370,6 +370,7 @@ a { text-decoration: none; }
 .filter-navbar {
     flex-wrap: wrap;
     overflow-x: hidden;
+    overflow-y: hidden;
     margin-top: -20px;
     margin-bottom: 11px;
     font-size: 44px; }

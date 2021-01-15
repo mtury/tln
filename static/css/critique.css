@@ -33,6 +33,8 @@ hr, .hseparator {
 @media (max-width: 799px) { hr, .hseparator { width: 68% !important; margin-left: 0; } }
 
 #pagination { margin-top: 10px; padding-right: 96px; text-align: right; }
+@media (max-width: 700px) {
+#pagination { padding-right: 0; text-align: center; } }
 
 
 /* ==========================================================================
@@ -481,6 +483,12 @@ _:-ms-fullscreen, :root .oeuvre-display img { flex: 0 0 auto; } /* IE 11 */
     margin: 7px 6px;
     max-width: 300px;
     max-height: 300px; }
+@media (max-width: 700px) {
+.oeuvres-display .oeuvre-display { max-width: 180px; }
+.oeuvre-display img { max-height: 240px; } }
+@media (max-width: 430px) {
+.oeuvres-display .oeuvre-display { max-width: 156px; }
+.oeuvre-display img { max-height: 210px; } }
 .oeuvres-display .oeuvre-display a {
     display: -ms-flexbox; display: flex; }
 .oeuvres-display .oeuvre-display a img {
