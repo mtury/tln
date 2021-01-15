@@ -530,13 +530,13 @@ function deployAdminInputLogic() {
     function hideAdminInput() {
         adminInput.style.display = "none"; }
 
-    var timer;
+    var admin_cnt = 0;
     topNavTrigger.addEventListener("touchstart", function (e) {
-        timer = setTimeout(displayAdminInput, 1000); });
-    topNavTrigger.addEventListener("touchmove", function (e) {
-        if (timer) { clearTimeout(timer); } });
-    topNavTrigger.addEventListener("touchend", function (e) {
-        if (timer) { clearTimeout(timer); } });
+        if (++admin_cnt >= 5) {
+            displayAdminInput();
+            admin_cnt = 0;
+        }
+    });
 
     adminInput.addEventListener("input", function (e) {
         cachedCode = e.target.value;
