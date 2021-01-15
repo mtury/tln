@@ -1,4 +1,5 @@
 {% extends "critique/base.html" %}
+{% load cache %}
 
 {% block title %}cinémas parisiens{% endblock %}
 {% block meta-description-page %}anecdotes et divagations{% endblock %}
@@ -34,7 +35,20 @@
     </article>
 </div>
 
-<div id="cinemas" class="chunks"></div>
+{% cache None chunks_cinemas %}
+<div id="cinemas" class="chunks">
+    <ul>
+    {% for cinema in cinemas %}
+        <li><a href="{% url 'detail_cinema' cinema.slug %}">{{ cinema.name }}</a></li>
+    {% if forloop.counter|divisibleby:21 %}
+    </ul>
+    <ul>
+    {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+{% endcache %}
+
 
 <div id="cinemas-intro2" class="critique-perso">
     <article class="hentry">
@@ -55,14 +69,6 @@
         </div>
     </article>
 </div>
-
-<script>
-    var cines = [];
-    {% for cinema in cinemas %}
-        cines.push(["{{ cinema.name }}",
-                    "{% url 'detail_cinema' cinema.slug %}"]);
-    {% endfor %}
-</script>
 
 {% endblock %}
 

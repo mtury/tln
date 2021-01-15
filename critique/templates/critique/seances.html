@@ -1,4 +1,5 @@
 {% extends "critique/base.html" %}
+{% load cache %}
 {% load l10n %}
 
 {% block title %}séances{% endblock %}
@@ -27,14 +28,37 @@
     </ul>
 </nav>
 
-<div id="seances" class="chunks"></div>
 
-<script>
-    var seances = [];
-    {% localize on %}
+{% if year < 2021 %}
+
+{% cache None chunks_seance year %}
+<div id="seances" class="chunks">
+    <ul>
     {% for seance, film in seances_enhanced %}
-        seances.push('<span>{% if seance.date_month_unknown %}en {{ seance.date|date:"Y" }} : {% else %}{% if year < 2012 %}{% if seance.date|date:"j" == "1" %}   1er {{ seance.date|date:"F Y" }} : {% else %}{{ seance.date|date:"j F Y" }} : {% endif %}{% else %}{% if seance.date|date:"j" == "1" %}1er {{ seance.date|date:"F" }} : {% else %}{{ seance.date|date:"j F" }} : {% endif %}{% endif %}{% endif %}{{ seance.cinema }} - {% if film %}<a href="{% url 'detail_oeuvre' film.slug %}">{{ film.info.titles.vf }}</a>{% else %}{% if seance.seance_title %}{{ seance.seance_title }}{% endif %}{% endif %}</span>')
+        <li><span>{% if seance.date_month_unknown %}en {{ seance.date|date:"Y" }} : {% else %}{% if year < 2012 %}{% if seance.date|date:"j" == "1" %}   1er {{ seance.date|date:"F Y" }} : {% else %}{{ seance.date|date:"j F Y" }} : {% endif %}{% else %}{% if seance.date|date:"j" == "1" %}1er {{ seance.date|date:"F" }} : {% else %}{{ seance.date|date:"j F" }} : {% endif %}{% endif %}{% endif %}{{ seance.cinema }} - {% if film %}<a href="{% url 'detail_oeuvre' film.slug %}">{{ film.info.titles.vf }}</a>{% else %}{% if seance.seance_title %}{{ seance.seance_title }}{% endif %}{% endif %}</span></li>
+    {% if forloop.counter|divisibleby:25 %}
+    </ul>
+    <ul>
+    {% endif %}
     {% endfor %}
-    {% endlocalize %}
-</script>
+    </ul>
+</div>
+{% endcache %}
+
+{% else %}
+
+<div id="seances" class="chunks">
+    <ul>
+    {% for seance, film in seances_enhanced %}
+        <li><span>{% if seance.date_month_unknown %}en {{ seance.date|date:"Y" }} : {% else %}{% if year < 2012 %}{% if seance.date|date:"j" == "1" %}   1er {{ seance.date|date:"F Y" }} : {% else %}{{ seance.date|date:"j F Y" }} : {% endif %}{% else %}{% if seance.date|date:"j" == "1" %}1er {{ seance.date|date:"F" }} : {% else %}{{ seance.date|date:"j F" }} : {% endif %}{% endif %}{% endif %}{{ seance.cinema }} - {% if film %}<a href="{% url 'detail_oeuvre' film.slug %}">{{ film.info.titles.vf }}</a>{% else %}{% if seance.seance_title %}{{ seance.seance_title }}{% endif %}{% endif %}</span></li>
+    {% if forloop.counter|divisibleby:25 %}
+    </ul>
+    <ul>
+    {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+
+{% endif %}
+
 {% endblock %}

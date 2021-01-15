@@ -1,4 +1,5 @@
 {% extends "critique/base.html" %}
+{% load cache %}
 
 {% block title %}rencontres{% endblock %}
 {% block meta-description-page %}liste d'œuvres rencontrées{% endblock %}
@@ -17,14 +18,18 @@
     </ul>
 </nav>
 
-<div id="collection" class="chunks"></div>
-
-<script>
-    var oeuvres = [];
+{% cache 86400 chunks_collection mtype %}
+<div id="collection" class="chunks">
+    <ul>
     {% for oeuvre in oeuvres %}
-        oeuvres.push(["{{ oeuvre.info.titles.vf }} ({{ oeuvre.info.year }})",
-                      "{% url 'detail_oeuvre' oeuvre.slug %}"]);
+        <li><a href="{% url 'detail_oeuvre' oeuvre.slug %}">{{ oeuvre.info.titles.vf }} ({{ oeuvre.info.year }})</a></li>
+    {% if forloop.counter|divisibleby:25 %}
+    </ul>
+    <ul>
+    {% endif %}
     {% endfor %}
-</script>
+    </ul>
+</div>
+{% endcache %}
 
 {% endblock %}

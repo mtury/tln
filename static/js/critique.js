@@ -351,46 +351,6 @@ if (filterBar) {
 }
 
 
-/* Critique Layout - Display objects by chunks */
-
-var textDecoder = document.createElement("textarea");
-function decodeHtml(html) {
-    textDecoder.innerHTML = html;
-    return textDecoder.value;
-}
-
-function fillChunksBy(container, collection, chunkSize, wholeLinks) {
-    for (i=0; i<collection.length/chunkSize; i++) {
-        var ul = document.createElement("ul");
-        container.appendChild(ul);
-        for (j=0; j<chunkSize; j++) {
-            if (collection[chunkSize*i+j]) {
-                var li = document.createElement("li");
-                if (wholeLinks) {
-                    var a = document.createElement("a");
-                    var text = decodeHtml(collection[chunkSize*i+j][0]);
-                    var textNode = document.createTextNode(text);
-                    a.href = collection[chunkSize*i+j][1];
-                    a.appendChild(textNode);
-                    li.appendChild(a);
-                } else {
-                    var text = decodeHtml(collection[chunkSize*i+j]);
-                    li.innerHTML = text;
-                }
-                ul.appendChild(li);
-            }
-        }
-    }
-}
-
-var collection = document.getElementById("collection");
-if (collection) { fillChunksBy(collection, oeuvres, 25, true); }
-var cinemas = document.getElementById("cinemas");
-if (cinemas) { fillChunksBy(cinemas, cines, 21, true); }
-var seancesDisplay = document.getElementById("seances");
-if (seancesDisplay) { fillChunksBy(seancesDisplay, seances, 25, false); }
-
-
 /* Forms - Validate form inputs */
 
 var oeuvreFormEmpty = document.getElementById("oeuvre_form_empty");
