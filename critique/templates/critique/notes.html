@@ -73,6 +73,7 @@
 </div>
 
 
+{% if notes.paginator.num_pages > 1 %}
 <nav id="pagination">
     {% if notes.has_previous %}
         <a href={% url "list_notes" mtype notes.previous_page_number %}><-</a>
@@ -97,5 +98,6 @@
     nextPageUrl = '{% url "list_notes" mtype notes.next_page_number %}';
     {% endif %}
 </script>
+{% endif %}
 
 {% endblock %}

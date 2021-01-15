@@ -35,6 +35,7 @@
 </ul>
 
 
+{% if oeuvres.paginator.num_pages > 1 %}
 <nav id="pagination">
     {% if oeuvres.has_previous %}
         <a href={% url "list_envies" mtype oeuvres.previous_page_number %}><-</a>
@@ -59,5 +60,6 @@
     nextPageUrl = '{% url "list_envies" mtype oeuvres.next_page_number %}';
     {% endif %}
 </script>
+{% endif %}
 
 {% endblock %}
