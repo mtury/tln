@@ -118,6 +118,8 @@ body #sidebar-column {
 .entry .entry-content h3 { margin-bottom: 4px; }
 .entry .entry-content p { text-align: justify; }
 .entry .entry-content img { max-width: 90%; display: block; margin: 38px auto; }
+.entry .entry-content .img-container-link { max-width: 90%; display: block; margin: auto; }
+.entry .entry-content .img-container-link img { max-width: 100%; display: block; }
 .entry .entry-footer { margin: 52px 0 10px 0; }
 .entry .entry-footer .entry-discussions { min-width: 40px; }
 
