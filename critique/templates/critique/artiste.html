@@ -11,13 +11,15 @@
     <h1 class="critique-title">{{ artist }}</h1>
 </div>
 
-<div id="collection" class="chunks artiste-oeuvres"></div>
-    
-<script>
-    var oeuvres = [];
+<div id="collection" class="chunks artiste-oeuvres">
+    <ul>
     {% for oeuvre in oeuvres %}
-        oeuvres.push(["{{ oeuvre.info.titles.vf }} ({{ oeuvre.info.year }})",
-                      "{% url 'detail_oeuvre' oeuvre.slug %}"]);
+        <li><a href="{% url 'detail_oeuvre' oeuvre.slug %}">{{ oeuvre.info.titles.vf }} ({{ oeuvre.info.year }})</a></li>
+    {% if forloop.counter|divisibleby:25 %}
+    </ul>
+    <ul>
+    {% endif %}
     {% endfor %}
-</script>
+    </ul>
+</div>
 {% endblock %}
